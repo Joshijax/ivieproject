@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Assignments{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="col-12 col-sm-6 col-md-10">
+                    <strong><h3>Assignments</h3></strong>
+        <hr/>
+            <div class="jumbotron jumbotron-fluid" style="margin-top: 20px;">
+                    <div class="container">
+                        <h3 class="display-4">{{course.title}}</h3>
+                        <p class="lead">{{course.content}}</p>
+                    </div>
+                </div>
+            {% for foo in assignment_submission %}
+
+
+                <p> <h4>Name</h4> {{ foo.name }} </p>
+
+                <p> <h4>Id</h4> {{ foo.university_id }} </p>
+                <hr/>
+                <p> <h4>Answer</h4> {{ foo.content }}  </p>
+
+                <br/>
+                <form>
+                    <div class="row">
+                        <div class="col">
+                        <div class="form-outline">
+                            <input type="number" id="typeNumber" class="form-control" />
+                            <label class="form-label" for="typeNumber">Number input</label>
+                        </div>
+                        </div>
+                        <div class="col">
+                        <button type="submit" class="btn btn-primary">Score</button>
+                        </div>
+                    </div>
+                </form>
+                
+                <a href="{% url 'core:assignment-submission-delete' foo.id %}">Delete Assignment</a>
+                  <hr/>
+            {% empty %}
+            <h1>No Submission</h1>
+            {% endfor %}
+
+
+
+
+            <br/>
+
+
+            <br/>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}

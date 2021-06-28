@@ -1,0 +1,65 @@
+ {% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block title %} Assignment Submission {% endblock %}
+
+{% block content %}
+
+    <section class="dentist-area section-padding-40-0">
+<div class="container">
+
+<div class="row justify-content-center">
+            
+                
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                <div class="jumbotron jumbotron-fluid" style="margin-top: 20px;">
+                    <div class="container">
+                        <h3 class="display-4">{{info_sended.title}}</h3>
+                        <p class="lead">{{info_sended.content}}</p>
+                    </div>
+                </div>
+                   
+                    <center> <h3> Submit Assignment </h3></center>
+                          <br/>
+                    <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+                            <div class="form-group">
+        <label class="control-label  " for="id_name"> Name</label>
+        <div class=" ">
+            <input type="text" name="name" maxlength="100" placeholder="Write Your Name" class=" form-control" value="{{request.user.first_name}} {{request.user.last_name}}" readonly required="" id="id_name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  " for="id_university_id">University Id</label>
+        <div class=" ">
+            <input type="text" name="university_id" maxlength="100" placeholder="Write Your Id" class=" form-control" required="" id="id_university_id">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  " for="id_content">Answer</label>
+        <div class=" ">
+            <textarea name="content" cols="40" rows="10" placeholder="Write Your Answer Here" class=" form-control" id="id_content"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  " for="id_file">Or Upload File</label>
+        <div class=" ">
+            <input type="file" name="file" placeholder="Upload Your FILE Here" id="id_file">
+        </div>
+    </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Submit" class="btn btn-primary btn-md text-white">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
